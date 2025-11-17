@@ -1,0 +1,42 @@
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    cursor: pointer;
+    padding: 10px 0; /* area hover diperbesar agar tidak putus */
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;  /* dropdown tepat di bawah tombol tanpa celah */
+    left: 0;
+
+    background: #fff7e9;
+    border: 1px solid #c8b69e;
+    border-radius: 10px;
+    min-width: 180px;
+    padding: 8px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    z-index: 99999;
+}
+
+/* Items */
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #3a2e22;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background: #d7c7ad;
+}
+
+/* Tampilkan dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

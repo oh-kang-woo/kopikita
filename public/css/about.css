@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #ede2d1;
+    color: #2c1c0f;
+}
+
+/* HEADER */
+.kopi-header {
+    background: #ede2d1;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2b1d0f;
+}
+
+.nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #2b1d0f;
+}
+
+.nav a.active {
+    background: #2b1d0f;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.nav .login {
+    opacity: 0.8;
+}
+
+/* CONTENT */
+.hero {
+    display: flex;
+    padding: 50px 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-block {
+    width: 55%;
+}
+
+.text-block h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.text-block p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* IMAGE */
+.image-block img {
+    width: 380px;
+    height: auto;
+
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-block {
+        width: 100%;
+    }
+
+    .image-block img {
+        margin-top: 25px;
+        width: 300px;
+    }
+}

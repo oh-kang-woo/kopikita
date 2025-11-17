@@ -15,3 +15,7 @@ Route::get('/dashboard', function () {
 Route::get('/funfact', function () {
     return view('funfact');
 })->name('funfact');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
