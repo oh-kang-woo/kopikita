@@ -7,14 +7,14 @@
     <div class="nav-links">
 
         <a href="{{route('dashboard')}}">Beranda</a>
-        <a href="#">Event</a>
+        <a href="{{route('event.index')}}">Event</a>
 
         <!-- 🔽 BAGIAN INI YANG DITAMBAHKAN -->
         <div class="dropdown">
             <a href="#" class="dropbtn">More ▾</a>
 
             <div class="dropdown-content">
-                <a href="#">Alat Seduh</a>
+                <a href="{{route('alat_kopi.index')}}">Alat Seduh</a>
                 <a href="#">Jenis Kopi</a>
                 <a href="#">Kedai Kopi</a>
                 <a href="#">Forum</a>

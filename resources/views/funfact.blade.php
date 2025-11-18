@@ -22,9 +22,10 @@
     }
 
     .funfact-section p {
-        font-size: 37px;
+        font-size: 35px;
         line-height: 1.7;
         margin-bottom: 1rem;
+        margin: 40px;
     }
 
     .funfact-section strong {
@@ -63,7 +64,7 @@
 <section class="funfact-section">
     <img src="{{ asset('images/magnify.png') }}" alt="Magnify coffee bean" class="img-left">
     <h1>Funfact!!!</h1>
-    <p><strong>Kopi adalah Komoditas Terbesar Kedua di Dunia</strong><br>
+    <p><strong>Kopi adalah Komoditas Terbesar Kedua di Dunia</strong>
         Setelah minyak bumi, kopi adalah komoditas yang paling banyak diperdagangkan secara global.
         Ada lebih dari 25 juta petani kopi di seluruh dunia.
     </p>
