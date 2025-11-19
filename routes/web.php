@@ -3,51 +3,87 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AlatKopiController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+/*
+|--------------------------------------------------------------------------
+| PUBLIC PAGE
+|--------------------------------------------------------------------------
+*/
+Route::get('/', fn() => view('home'))->name('home');
+Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+Route::get('/funfact', fn() => view('funfact'))->name('funfact');
+Route::get('/about', fn() => view('about'))->name('about');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//alat kopi
+Route::get('/alatkopi', [AlatKopiController::class, 'index'])->name('alat');
+Route::get('/alatkopi/{id}', [AlatKopiController::class, 'show'])->name('alat_kopi.show');
 
-Route::get('/funfact', function () {
-    return view('funfact');
-})->name('funfact');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.process');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/alatkopi', function () {
-    return view('alat');
-})->name('alat');
-
-// ================== USER EVENT VIEW ==================
+/*
+|--------------------------------------------------------------------------
+| EVENT USER VIEW
+|--------------------------------------------------------------------------
+*/
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 
-// ================== ADMIN CRUD EVENT ==================
-Route::get('/event/admin', [EventController::class, 'adminIndex'])->name('admin.event.index');
-Route::get('/event/create', [EventController::class, 'create'])->name('admin.event.create');
-Route::post('/event/store', [EventController::class, 'store'])->name('admin.event.store');
-Route::get('/event/{id}/edit', [EventController::class, 'edit'])->name('admin.event.edit');
-Route::put('/event/{id}', [EventController::class, 'update'])->name('admin.event.update');
-Route::delete('/event/{id}', [EventController::class, 'destroy'])->name('admin.event.delete');
+/*
+|--------------------------------------------------------------------------
+| ADMIN ROUTES
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['role:admin'])->group(function () {
 
+    // DASHBOARD ADMIN
+    Route::get('/admin/dashboard', fn() => view('admin.dashAdmin'))->name('admin.dashboard');
 
+    // ALAT KOPI
+    Route::get('/alat-kopi/create', [AlatKopiController::class, 'create'])->name('admin.alat_kopi.create');
+    Route::post('/alat-kopi', [AlatKopiController::class, 'store'])->name('admin.alat_kopi.store');
+    Route::get('/alat-kopi', [AlatKopiController::class, 'index'])->name('alat_kopi.index');
 
-// ================== ALAT KOPI ==================
-// Tampilkan semua alat kopi (publik)
-Route::get('/alat-kopi', [AlatKopiController::class, 'index'])->name('alat_kopi.index');
+    // EVENT
+    Route::get('/event/create', [EventController::class, 'create'])->name('admin.event.create');
+    Route::post('/event/store', [EventController::class, 'store'])->name('admin.event.store');
 
-// Form untuk menambah alat kopi (admin)
-Route::get('/alat-kopi/create', [AlatKopiController::class, 'create'])->name('admin.alat_kopi.create');
+    // FORUM ADMIN
+    Route::get('/admin/forum', [ForumController::class, 'adminIndex'])->name('admin.forum.index');
+    Route::get('/admin/forum/create', [ForumController::class, 'create'])->name('admin.forum.create');
+    Route::post('/admin/forum/store', [ForumController::class, 'store'])->name('admin.forum.store');
+    Route::get('/admin/forum/{id}/edit', [ForumController::class, 'edit'])->name('admin.forum.edit');
+    Route::put('/admin/forum/{id}', [ForumController::class, 'update'])->name('admin.forum.update');
+    Route::delete('/admin/forum/{id}', [ForumController::class, 'destroy'])->name('admin.forum.delete');
+});
 
-// Simpan data alat kopi (admin)
-Route::post('/alat-kopi', [AlatKopiController::class, 'store'])->name('admin.alat_kopi.store');
+/*
+|--------------------------------------------------------------------------
+| FORUM USER
+|--------------------------------------------------------------------------
+*/
+Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
+Route::get('/forum/{id}', [ForumController::class, 'show'])->name('forum.show');
 
-// Search alat kopi
-Route::get('/alat-kopi/search', [AlatKopiController::class, 'search'])->name('artikel.search');
-
-Route::get('/alat-kopi/{id}', [AlatKopiController::class, 'show'])->name('alat_kopi.show');
+/*
+|--------------------------------------------------------------------------
+| COMMENT
+|--------------------------------------------------------------------------
+|
+| Semua user yang LOGIN boleh komentar.
+| Tidak pakai role:user supaya Admin tidak error (kalau mau test komentar).
+|
+|--------------------------------------------------------------------------
+*/
+Route::post('/forum/{forum}/comment', [CommentController::class, 'store'])
+    ->middleware('auth')
+    ->name('comment.store');

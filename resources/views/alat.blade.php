@@ -3,6 +3,8 @@
 @section('content')
 
 <style>
+/* ... (Bagian CSS yang tidak berubah) ... */
+
     body {
         font-family: serif;
     }
@@ -38,6 +40,7 @@
         gap: 35px;
     }
 
+    /* Penyesuaian untuk kartu */
     .card {
         background: #ffffff;
         border-radius: 14px;
@@ -47,6 +50,14 @@
         cursor: pointer;
         text-decoration: none;
         color: inherit;
+        padding-top: 0;
+
+        /* === MODIFIKASI UNTUK PERSEGI === */
+        display: flex; /* Gunakan flexbox untuk menyusun item secara vertikal */
+        flex-direction: column;
+
+        /* Hapus properti tinggi tetap */
+        height: auto;
     }
 
     .card:hover {
@@ -54,9 +65,36 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
+    /* Gaya untuk Header/Judul Artikel */
+    .card-header-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding: 15px 18px 0;
+    }
+
+    /* Deskripsi Singkat */
+    .card-desc {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        padding: 0 18px;
+    }
+
+    /* === MODIFIKASI UTAMA UNTUK RASIO ASPEK (PERSEGI) === */
     .card-img-box {
-        height: 180px;
+        /* Hapus tinggi tetap (180px) */
+        height: 0;
+
+        /* Rasio Aspek 1:1 (Tinggi = Lebar) */
+        /* Padding-bottom 100% dari lebar parent (kolom grid) */
+        padding-bottom: 100%;
+        position: relative;
         overflow: hidden;
+
+        /* Tambahkan margin atas untuk memisahkan dari deskripsi */
+        margin-top: auto;
     }
 
     .card-img {
@@ -64,26 +102,24 @@
         height: 100%;
         object-fit: cover;
         transition: 0.4s all ease;
+
+        /* Pastikan gambar mengisi kotak gambar 1:1 */
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .card:hover .card-img {
         transform: scale(1.08);
     }
 
+    /* Hapus/sesuaikan elemen yang tidak digunakan */
     .card-content {
-        padding: 18px;
+        display: none; /* Menyembunyikan card-content jika tidak digunakan */
     }
 
     .card-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    .card-desc {
-        font-size: 14px;
-        color: #555;
-        line-height: 1.4;
+        display: none;
     }
 
     @media(max-width: 768px) {
@@ -113,17 +149,27 @@
             {{-- CARD dengan LINK ke halaman SHOW --}}
             <a href="{{ route('alat_kopi.show', $alat->id) }}" class="card">
 
+                {{-- 1. Judul Artikel Diletakkan di Paling Atas --}}
+                <div class="card-header-title">
+                    Artikel - {{ $alat->nama }}
+                </div>
+
+                {{-- 2. Deskripsi Singkat Diletakkan di Bawah Judul --}}
+                <div class="card-desc">{{ $alat->deskripsi_singkat }}</div>
+
+
+                {{-- 3. Gambar Diletakkan di Bawah Deskripsi - Ini akan menjadi persegi --}}
                 <div class="card-img-box">
                     <img src="{{ asset('storage/' . $alat->gambar) }}"
                          class="card-img"
                          alt="{{ $alat->nama }}">
                 </div>
 
+                {{-- Konten yang tidak lagi digunakan bisa disembunyikan/dihapus --}}
                 <div class="card-content">
-                    <div class="card-title">Artikel - {{ $alat->nama }}</div>
-                    <div class="card-desc">{{ $alat->deskripsi_singkat }}</div>
-
+                    {{-- Kosong --}}
                 </div>
+
 
             </a>
 

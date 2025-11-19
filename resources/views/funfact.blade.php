@@ -62,7 +62,7 @@
 </style>
 
 <section class="funfact-section">
-    <img src="{{ asset('images/magnify.png') }}" alt="Magnify coffee bean" class="img-left">
+    <img src="{{ asset('images/lensakopi.png') }}" alt="Magnify coffee bean" class="img-left">
     <h1>Funfact!!!</h1>
     <p><strong>Kopi adalah Komoditas Terbesar Kedua di Dunia</strong>
         Setelah minyak bumi, kopi adalah komoditas yang paling banyak diperdagangkan secara global.

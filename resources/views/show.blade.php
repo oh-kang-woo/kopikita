@@ -79,7 +79,7 @@
 
 <div class="article-container">
 
-    <a href="{{ route('alat_kopi.index') }}" class="back-link">
+    <a href="{{ route('alat') }}" class="back-link">
         ← Kembali
     </a>
 

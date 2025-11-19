@@ -14,15 +14,15 @@
             <a href="#" class="dropbtn">More ▾</a>
 
             <div class="dropdown-content">
-                <a href="{{route('alat_kopi.index')}}">Alat Seduh</a>
-                <a href="#">Jenis Kopi</a>
+                <a href="{{route('alat')}}">Alat Seduh</a>
+                <a href="{{route('forum.index')}}">Jenis Kopi</a>
                 <a href="#">Kedai Kopi</a>
-                <a href="#">Forum</a>
+            <a href="#">Forum</a>
             </div>
         </div>
         <!-- 🔽 SAMPAI SINI -->
 
         <a href="{{route('about')}}">Tentang Kami</a>
-        <a href="{{route('home')}}" class="btn-login-nav">login</a>
+        <a href="{{route('login')}}" class="btn-login-nav">login</a>
     </div>
 </nav>

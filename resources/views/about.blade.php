@@ -20,7 +20,7 @@
     </div>
 
     <div class="image-block">
-        <img src="{{ asset('images/kopikita-illustration.png')}}" alt="Ilustrasi Kopi" />
+        <img src="{{ asset('images/kopikeluarga.jpeg')}}" alt="Ilustrasi Kopi" />
     </div>
 </section>
 
