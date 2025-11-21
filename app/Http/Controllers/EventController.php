@@ -21,7 +21,6 @@ class EventController extends Controller
         return view('event', compact('events', 'filter'));
     }
 
-
     // =================== ADMIN CRUD ====================
     public function adminIndex()
     {
@@ -39,6 +38,7 @@ class EventController extends Controller
         $request->validate([
             'judul' => 'required',
             'tanggal' => 'required|date',
+            'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal',
             'lokasi' => 'required',
             'tipe' => 'required|in:online,offline',
             'status' => 'required|in:aktif,nonaktif',
@@ -69,6 +69,7 @@ class EventController extends Controller
         $request->validate([
             'judul' => 'required',
             'tanggal' => 'required|date',
+            'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal',
             'lokasi' => 'required',
             'tipe' => 'required|in:online,offline',
             'status' => 'required|in:aktif,nonaktif',

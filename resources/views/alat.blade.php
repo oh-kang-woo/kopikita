@@ -42,7 +42,7 @@
 
     /* Penyesuaian untuk kartu */
     .card {
-        background: #ffffff;
+        background: #ffffff00;
         border-radius: 14px;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -51,6 +51,7 @@
         text-decoration: none;
         color: inherit;
         padding-top: 0;
+
 
         /* === MODIFIKASI UNTUK PERSEGI === */
         display: flex; /* Gunakan flexbox untuk menyusun item secara vertikal */

@@ -71,7 +71,7 @@
 /* Background Container Full Screen */
 .main-bg {
     /* Ganti URL ini dengan gambar background kopi/orang ngopi Anda */
-    background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop');
+   background-image: url('{{ asset('images/bg-events.jpg') }}');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -81,7 +81,7 @@
 
 /* Overlay Coklat Gelap Transparan */
 .overlay {
-    background: linear-gradient(to bottom, rgba(62, 44, 28, 0.85), rgba(62, 44, 28, 0.9));
+    /* background: linear-gradient(to bottom, rgba(62, 44, 28, 0.85), rgba(62, 44, 28, 0.9)); */
     min-height: 100vh;
     padding: 50px 20px;
     display: flex;
