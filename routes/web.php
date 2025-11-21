@@ -53,9 +53,17 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/alat-kopi', [AlatKopiController::class, 'store'])->name('admin.alat_kopi.store');
     Route::get('/alat-kopi', [AlatKopiController::class, 'index'])->name('alat_kopi.index');
 
+<<<<<<< HEAD
     // EVENT ADMIN
+=======
+    // EVENT
+
+>>>>>>> 582e0d24d54c2236d7ab8c293649a7860f340970
     Route::get('/event/create', [EventController::class, 'create'])->name('admin.event.create');
+    Route::get('/event/index', [EventController::class, 'adminIndex'])->name('admin.event.index');
+    Route::get('/admin/event/{id}/edit', [EventController::class, 'edit'])->name('admin.event.edit');
     Route::post('/event/store', [EventController::class, 'store'])->name('admin.event.store');
+    Route::delete('/admin/event/{id}', [EventController::class, 'destroy'])->name('admin.event.destroy');
 
     // FORUM ADMIN
     Route::get('/admin/forum', [ForumController::class, 'adminIndex'])->name('admin.forum.index');

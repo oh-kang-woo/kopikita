@@ -5,7 +5,7 @@
     /* === Hero Section === */
     .hero {
         position: relative;
-        background: url('{{ asset("images/undefined (3).jpeg") }}') center/cover no-repeat;
+        background: url('{{ asset("images/bg-beranda.jpg") }}') center/cover no-repeat;
         height: 90vh;
         display: flex;
         align-items: center;
