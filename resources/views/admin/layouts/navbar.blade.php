@@ -5,7 +5,7 @@
 
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="#" class="flex items-center text-xl font-extrabold text-coffee-dark tracking-tighter">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center text-xl font-extrabold text-coffee-dark tracking-tighter">
                     <i class="fas fa-mug-hot mr-2 text-mocha-light text-2xl"></i>
                     Barista Admin
                 </a>
@@ -14,27 +14,36 @@
             <!-- Desktop Navigation -->
             <div class="hidden sm:flex sm:space-x-4 lg:space-x-8 items-center">
 
-                <a href="{{ route('admin.dashboard') }}" class="nav-link bg-cream-bg shadow-md text-coffee-dark font-semibold py-2 px-4 rounded-xl">
+                <a href="{{ route('admin.dashboard') }}" 
+                   class="nav-link bg-cream-bg shadow-md text-coffee-dark font-semibold py-2 px-4 rounded-xl">
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.alat_kopi.create') }}" class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
+                <a href="{{ route('admin.alat_kopi.create') }}" 
+                   class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
                     Daftarkan Alat Kopi
                 </a>
 
-                <a href="{{ route('admin.event.create') }}" class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
+                <a href="{{ route('admin.event.create') }}" 
+                   class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
                     Tambahkan Event
                 </a>
 
-                <a href="{{ route('admin.forum.create') }}" class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
+                <a href="{{ route('admin.forum.create') }}" 
+                   class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
                     Tambahkan Forum
+                </a>
+
+                <!-- Kelola Kedai Kopi -->
+                <a href="{{ route('admin.kedai.index') }}" 
+                   class="nav-link bg-cream-bg/60 shadow-sm text-tan-dark/70 font-medium py-2 px-4 rounded-xl hover:bg-cream-bg hover:text-coffee-dark">
+                    Kelola Kedai Kopi
                 </a>
             </div>
 
             <!-- Profile -->
             <div class="flex items-center">
 
-                <!-- Dropdown Container -->
                 <div class="relative hidden sm:block">
 
                     <!-- Button -->
@@ -63,7 +72,7 @@
                         </a>
                     </div>
 
-                </div> <!-- DITUTUP DI SINI -->
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button type="button" onclick="toggleMobileMenu()" class="sm:hidden p-2 rounded-md">

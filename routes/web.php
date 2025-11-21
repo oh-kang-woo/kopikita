@@ -6,6 +6,7 @@ use App\Http\Controllers\AlatKopiController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KedaiKopiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,9 @@ Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 Route::get('/funfact', fn() => view('funfact'))->name('funfact');
 Route::get('/about', fn() => view('about'))->name('about');
 
-//alat kopi
+// ALAT KOPI USER
 Route::get('/alatkopi', [AlatKopiController::class, 'index'])->name('alat');
 Route::get('/alatkopi/{id}', [AlatKopiController::class, 'show'])->name('alat_kopi.show');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,27 +33,27 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| EVENT USER VIEW
+| EVENT USER
 |--------------------------------------------------------------------------
 */
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN ROUTES
+| ADMIN ROUTES (SEMUA HANYA UNTUK ADMIN)
 |--------------------------------------------------------------------------
 */
 Route::middleware(['role:admin'])->group(function () {
 
-    // DASHBOARD ADMIN
+    // Dashboard Admin
     Route::get('/admin/dashboard', fn() => view('admin.dashAdmin'))->name('admin.dashboard');
 
-    // ALAT KOPI
+    // ALAT KOPI ADMIN
     Route::get('/alat-kopi/create', [AlatKopiController::class, 'create'])->name('admin.alat_kopi.create');
     Route::post('/alat-kopi', [AlatKopiController::class, 'store'])->name('admin.alat_kopi.store');
     Route::get('/alat-kopi', [AlatKopiController::class, 'index'])->name('alat_kopi.index');
 
-    // EVENT
+    // EVENT ADMIN
     Route::get('/event/create', [EventController::class, 'create'])->name('admin.event.create');
     Route::post('/event/store', [EventController::class, 'store'])->name('admin.event.store');
 
@@ -64,6 +64,18 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/forum/{id}/edit', [ForumController::class, 'edit'])->name('admin.forum.edit');
     Route::put('/admin/forum/{id}', [ForumController::class, 'update'])->name('admin.forum.update');
     Route::delete('/admin/forum/{id}', [ForumController::class, 'destroy'])->name('admin.forum.delete');
+
+    /*
+    |--------------------------------------------------------------------------
+    | KEDAI KOPI ADMIN (INI SUDAH FIX & AMAN)
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/admin/kedai', [KedaiKopiController::class, 'adminIndex'])->name('admin.kedai.index');
+    Route::get('/admin/kedai/create', [KedaiKopiController::class, 'create'])->name('admin.kedai.create');
+    Route::post('/admin/kedai', [KedaiKopiController::class, 'store'])->name('admin.kedai.store');
+    Route::get('/admin/kedai/{id}/edit', [KedaiKopiController::class, 'edit'])->name('admin.kedai.edit');
+    Route::put('/admin/kedai/{id}', [KedaiKopiController::class, 'update'])->name('admin.kedai.update');
+    Route::delete('/admin/kedai/{id}', [KedaiKopiController::class, 'destroy'])->name('admin.kedai.delete');
 });
 
 /*
@@ -76,14 +88,16 @@ Route::get('/forum/{id}', [ForumController::class, 'show'])->name('forum.show');
 
 /*
 |--------------------------------------------------------------------------
-| COMMENT
-|--------------------------------------------------------------------------
-|
-| Semua user yang LOGIN boleh komentar.
-| Tidak pakai role:user supaya Admin tidak error (kalau mau test komentar).
-|
+| COMMENT (Login Required)
 |--------------------------------------------------------------------------
 */
 Route::post('/forum/{forum}/comment', [CommentController::class, 'store'])
     ->middleware('auth')
     ->name('comment.store');
+
+/*
+|--------------------------------------------------------------------------
+| KEDAI KOPI USER
+|--------------------------------------------------------------------------
+*/
+Route::get('/kedai-kopi', [KedaiKopiController::class, 'index'])->name('kedai.kopi');

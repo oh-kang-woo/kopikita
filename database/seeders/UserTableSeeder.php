@@ -19,6 +19,12 @@ class UserTableSeeder extends Seeder
                 'role' => 'user',
             ],
             [
+                'name' => 'admin',
+                'email' => 'admin@coffee.com',
+                'password' => Hash::make('admin123'),
+                'role' => 'admin',
+            ],
+            [
                 'name' => 'Espresso King',
                 'email' => 'espresso@coffee.com',
                 'password' => Hash::make('espresso123'),
